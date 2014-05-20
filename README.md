@@ -7,25 +7,38 @@ There are currently no less than three ways to include forms in your Activiti wo
 Each method has advantages and disadvantages. 
 
 #####Activiti Forms
+
 *Advantages*
--Quick and easy for simple use cases
--No HTML form is required, form is rendered n the fly from the Activiti defined form fields
+
+- Quick and easy for simple use cases
+- No HTML form is required, form is rendered n the fly from the Activiti defined form fields
+
 *Disadvantages*
--Limited to Activiti form schema, for example, there is no password form field type, so passwords appear in clear test instead of bullets
--Limited functionality since there is no HTML form, there can be no JavaScript code to hook into product features
+
+- Limited to Activiti form schema, for example, there is no password form field type, so passwords appear in clear test instead of bullets
+- Limited functionality since there is no HTML form, there can be no JavaScript code to hook into product features
+
 #####_formGenerationTemplate
+
 *Advantages*
--Easy to embed in BPMN XML with custom builder now and part of default behavior in v3.0
--JavaScript code can be used to access product features like realtime password strength evaluation
+
+- Easy to embed in BPMN XML with custom builder now and part of default behavior in v3.0
+- JavaScript code can be used to access product features like realtime password strength evaluation
+
 *Disadvantages*
--In v2.x, default behavior is to require XML escaped HTML which is ugly and hard to read and modify
+
+- In v2.x, default behavior is to require XML escaped HTML which is ugly and hard to read and modify
 #####formKey
+
 *Advantages*
--Deepest integration into the OpenIDM UI Framework
--Lets forms be defined outside the Activiti BPMN XML file
+
+- Deepest integration into the OpenIDM UI Framework
+- Lets forms be defined outside the Activiti BPMN XML file
+
 *Disadvantages*
--Deepest integration into the OpenIDM UI Framework
--Must know our UI framework (JQuery, Backbone, Mustache)
+
+- Deepest integration into the OpenIDM UI Framework
+- Must know our UI framework (JQuery, Backbone, Mustache)
 
 
 
