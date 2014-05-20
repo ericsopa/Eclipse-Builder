@@ -28,6 +28,7 @@ Each method has advantages and disadvantages.
 *Disadvantages*
 
 - In v2.x, default behavior is to require XML escaped HTML which is ugly and hard to read and modify
+
 #####formKey
 
 *Advantages*
