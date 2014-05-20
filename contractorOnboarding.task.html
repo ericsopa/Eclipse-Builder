@@ -1,0 +1,141 @@
+<style>
+#taskDetails fieldset {
+       margin-top: 0;
+}
+#taskDetails .group-field {
+       float: left !important;
+       width: 100%;
+}
+#taskDetails .field label {
+       text-align: left;
+}
+#taskDetails .field input,#taskDetails .field select {
+       clear: both;
+}
+#taskDetails .field .validation-message {
+       clear: none !important;
+       margin-left: 20px !important;
+       float: left !important;
+}
+</style>
+
+    <h2 class="header">Contractor Details</h2>
+
+        <fieldset>
+            <div class="fields">
+                <div class="field">
+                    <label>Username</label> 
+                    <input type="text" name="userName" value="{{variables.userName}}" data-validation-dependents="password"/> 
+                    <span class="error">x</span>
+                    <div class="validation-message"></div>
+                </div>
+
+                <div class="field">
+                    <label>{{t "common.user.emailAddress"}}</label> 
+                    <input type="text" name="email" value="{{variables.email}}" /> 
+                    <span class="error">x</span>
+                    <div class="validation-message"></div>
+                </div>
+
+                <div class="field">
+                    <label>{{t "common.user.givenName"}}</label> 
+                    <input type="text" name="givenName" value="{{variables.givenName}}" data-validation-dependents="password"/> 
+                    <span class="error">x</span>
+                    <div class="validation-message"></div>
+                </div>
+
+                <div class="field">
+                    <label>{{t "common.user.familyName"}}</label> 
+                    <input type="text" name="familyName" value="{{variables.familyName}}" data-validation-dependents="password"/> 
+                    <span class="error">x</span>
+                    <div class="validation-message"></div>
+                </div>
+                
+                <div class="field">
+                    <label>{{t "common.user.phoneNumber"}}</label> 
+                    <input type="text" name="phoneNumber" value="{{variables.phoneNumber}}" /> 
+                    <span class="error">x</span>
+                    <div class="validation-message"></div>
+                </div>
+
+                <div class="group-field">
+                    <div class="group-field-inputs">
+                        <div class="field">
+                            <label>{{t "common.user.password"}}</label> 
+                            <input type="password" name="password" value="{{variables.password}}" data-validation-dependents="passwordConfirm"/>
+                            <span class="error">x</span>
+                        </div>
+
+                        <div class="field">
+                            <label>{{t "common.user.confirmPassword"}}</label> 
+                            <input type="password" name="passwordConfirm" value="{{variables.password}}" data-validator="passwordConfirm" data-validator-event="keyup change" />
+                            <span class="error">x</span>
+                        </div>
+                    </div>
+                    
+                {{#if assignee}}
+                    <div class="group-field-errors validationRules" data-for-validator="password passwordConfirm">
+
+                        <div class="field-rule">
+                            <span class="error">x</span> 
+                            <span data-for-validator="passwordConfirm">{{t "common.form.validation.confirmationMatchesPassword"}}</span>
+                        </div>
+                    </div>
+                {{/if}}
+                    
+                </div>
+
+                
+                <div class="field">
+                    <label>Provision to XML</label> 
+                    <select name="provisionToXML">
+                         <option value="1">Yes</option>
+                         <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Department</label> 
+                    <input type="text" name="department" value="{{variables.department}}" /> 
+                </div>
+                <div class="field">
+                    <label>Job Title</label> 
+                    <input type="text" name="jobTitle" value="{{variables.jobTitle}}" /> 
+                </div>
+                <div class="field">
+                    <label>Description</label> 
+                    <input type="text" name="description" value="{{variables.description}}" /> 
+                </div>
+                <div class="field">
+                    <label>Start Date</label> 
+                    <input type="text" name="startDate" value="{{variables.startDate}}" /> 
+                </div>
+                <div class="field">
+                    <label>End Date</label> 
+                    <input type="text" name="endDate" value="{{variables.endDate}}" /> 
+                </div>
+
+
+                <div class="field">  
+                    <label class="light">{{t "common.form.decision"}}</label> 
+                    {{select  variables.decisionOptions "decision" "0" ""  " data-validator='required' "}}
+        
+                    <span class="ok" style="">✔</span>
+                    <div class="validation-message"></div> 
+                </div>
+
+
+            </div>
+            
+        </fieldset>
+
+<script>
+$('#taskDetails form select[name=provisionToXML]').val("{{variables.provisionToXML}}");
+{{#if assignee}}
+require(["org/forgerock/commons/ui/common/main/ValidatorsManager"], function (v) { 
+   v.bindValidators($('#taskDetails form'), "managed/user/", function () {
+       v.validateAllFields($('#taskDetails form'));
+   });
+});
+{{/if}}
+</script>
